@@ -29,9 +29,13 @@
 
                             </td>
                             <td class="flex items-center gap-2">
-                                <a href="" class="text-info font-thin">Modifier</a>
-                                <a href="" class="text-error font-thin"
-                                    onclick="confirm('voulez-vous Supprimer la citation ?')">Supprimer</a>
+                                <a href="{{ route('edit', $citation->id) }}" class="text-info font-thin">Modifier</a>
+                                <form action="{{ route('destroy', $citation->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="text-error font-thin cursor-pointer hover:underline"
+                                        onclick="confirm('voulez-vous Supprimer la citation ?')" value="Supprimer">
+                                </form>
                             </td>
                         </tr>
                     @endforeach
