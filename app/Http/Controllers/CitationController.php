@@ -12,8 +12,8 @@ class CitationController extends Controller
      */
     public function index()
     {
-        
-        return view('Citation.index');
+        $citations =Citation::all();
+        return view('Citation.index',compact('citations'));
     }
 
 
@@ -33,9 +33,9 @@ class CitationController extends Controller
         ]);
 
         Citation::create([
-            'auteur' => $request->auteur,
+            'auteur' => $request-> auteur,
             'description' => $request->description,
-            'status' => $request->status == 'on' ? 1 : 0
+            'status' => $request-> status == 'on' ? 1 : 0
         ]);
 
         return redirect()->route('index')->with('success','Citation enregistrer avec success');
@@ -45,9 +45,9 @@ class CitationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Citation $citation)
+    public function edit(int $id)
     {
-        //
+        return view('Citation.create');
     }
 
     /**
