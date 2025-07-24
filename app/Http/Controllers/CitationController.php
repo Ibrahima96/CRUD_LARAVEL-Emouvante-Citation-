@@ -7,24 +7,20 @@ use Illuminate\Http\Request;
 
 class CitationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         $citations =Citation::all();
-        return view('Citation.index',compact('citations'));
+        return view('citation.index',compact('citations'));
     }
 
 
     public function create()
     {
-        return view('Citation.create');
+        return view('citation.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -42,19 +38,15 @@ class CitationController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(int $id)
     {
         $citation = Citation::where('id',$id)->first();
         
-        return view('Citation.create',compact('citation'));
+        return view('citation.create',compact('citation'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(Request $request, int $id)
     {
          $request->validate([
@@ -74,9 +66,7 @@ class CitationController extends Controller
           return redirect()->route('index')->with('success','Citation modifier avec success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(int $id)
     {
         Citation::where('id',$id)->delete();

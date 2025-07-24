@@ -2,9 +2,15 @@
 
 @section('content')
     <div>
-        <a href="{{ route('create') }}" class="btn bg-blue-500 text-gray-100 px-12 mb-8">Ajouter</a>
+        <a href="{{ route('citation.create') }}" class="btn bg-blue-500 text-gray-100 px-12 mb-8">Ajouter</a>
 
+        @if (session('success'))
+            <div role="alert" class="alert alert-success alert-soft mb-5" id ="alert">
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
         <div class="overflow-x-auto">
+
             <table class="table">
                 <!-- head -->
                 <thead>
@@ -29,12 +35,13 @@
 
                             </td>
                             <td class="flex items-center gap-2">
-                                <a href="{{ route('edit', $citation->id) }}" class="text-info font-thin">Modifier</a>
-                                <form action="{{ route('destroy', $citation->id) }}" method="post">
+                                <a href="{{ route('citation.edit', $citation->id) }}"
+                                    class="text-info font-thin">Modifier</a>
+                                <form action="{{ route('citation.destroy', $citation->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" class="text-error font-thin cursor-pointer hover:underline"
-                                        onclick="confirm('voulez-vous Supprimer la citation ?')" value="Supprimer">
+                                        onclick=" return confirm ('voulez-vous Supprimer la citation ?')" value="Supprimer">
                                 </form>
                             </td>
                         </tr>
@@ -44,3 +51,4 @@
         </div>
     </div>
 @endsection
+

@@ -10,7 +10,7 @@
             Citations
 
         </h2>
-        <form action="{{ empty($citation) ? route('store') : route('update', $citation->id) }}" method="post"
+        <form action="{{ empty($citation) ? route('citation.store') : route('citation.update', $citation->id) }}" method="post"
             class="space-y-8">
             @csrf
             @if (!empty($citation))
