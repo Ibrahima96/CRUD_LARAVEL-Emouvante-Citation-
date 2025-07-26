@@ -52,3 +52,11 @@
     </div>
 @endsection
 
+@section('script')
+  <script>
+      let hiddenAlert = document.querySelector('#alert');
+      setTimeout(() => {
+        hiddenAlert.classList.add('hidden')
+      }, 5000);
+    </script>
+@endsection
